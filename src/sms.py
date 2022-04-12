@@ -4,7 +4,7 @@ import weather
 
 def sendMessage():
     #Get JSON details for various information to access Twilio
-    with open("twilioapi.json") as jsonFile:
+    with open("../data/twilioapi.json") as jsonFile:
         SMSdata = json.load(jsonFile)
 
     #Get dictionary of JSON data from Weather API

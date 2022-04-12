@@ -12,5 +12,4 @@ schedule.every(30).seconds.do(job)
 #Loop endlessly, running the job
 while True:
     schedule.run_pending()
-    time.sleep(1)
-    
+    time.sleep(1) 

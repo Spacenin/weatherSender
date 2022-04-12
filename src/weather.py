@@ -3,7 +3,7 @@ import json
 
 def getForecast():
     #Get API key from weatherAPI JSON file
-    with open("weatherapi.json") as jsonFile:
+    with open("../data/weatherapi.json") as jsonFile:
         apiKey = json.load(jsonFile)
 
     #Get JSON of forecast data
@@ -12,5 +12,3 @@ def getForecast():
     #Parse out the day data and return it to sms
     dailyForecast = forecastData["forecast"]["forecastday"][0]["day"]
     return(dailyForecast)
-
-    
