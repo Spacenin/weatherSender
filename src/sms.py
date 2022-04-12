@@ -22,3 +22,5 @@ def sendMessage():
             from_=SMSdata["FromPhone"],
             to=str(number)
         )
+        
+    
