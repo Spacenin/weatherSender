@@ -7,7 +7,7 @@ def job():
     sms.sendMessage()
 
 #Schedule to send every 30 seconds
-schedule.every(30).seconds.do(job)
+schedule.every().day.at("07:00").do(job)
 
 #Loop endlessly, running the job
 while True:
