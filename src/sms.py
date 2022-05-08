@@ -1,6 +1,7 @@
 import json
 from twilio.rest import Client
 import weather
+import db
 
 def sendMessage():
     #Get JSON details for various information to access Twilio
@@ -10,17 +11,21 @@ def sendMessage():
     #Setup connection
     client = Client(SMSdata["SID"], SMSdata["Auth"])
 
-    #Send text message to every recipient
-    for number in SMSdata["ToPhones"]:
-        #Get dictionary of JSON data from Weather API
-        dailyForecast = weather.getForecast(number[2])
-        
-        #Create message to send
-        client.messages.create(
-            body=composeMsg(number, dailyForecast),
-            from_=SMSdata["FromPhone"],
-            to=str(number[0])
-        )
+    #Get all numbers from mysql database
+    numberSet = db.getNumbers()
+
+    if numberSet:
+        #Send text message to every recipient
+        for number in numberSet:
+            #Get dictionary of JSON data from Weather API
+            dailyForecast = weather.getForecast(number[0])
+            
+            #Create message to send
+            client.messages.create(
+                body=composeMsg(number, dailyForecast),
+                from_=SMSdata["FromPhone"],
+                to=str(number[2])
+            )
     
 def composeMsg(number, dailyForecast):
     #Create message with all applicable stats
