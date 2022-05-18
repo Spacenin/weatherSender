@@ -3,19 +3,31 @@
     <head>
         <meta charset="UTF-8">
         <title>weatherSender Login</title>
+        <link rel="stylesheet" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <body>
-        <form action="weatherSender/createUser.php" method="post">
-            <label for="number">Enter your phone number (+1nnnnnnnnnn): </label>
-            <input type="text" id="numberBox" name="number" placeholder="Enter phone number here">
-            <br>
-            <label for="name">Enter your first name: </label>
-            <input type="text" id="nameBox" name="name" placeholder="Enter your first name here">
-            <br>
-            <label for="zipcode">Enter your zipcode here (nnnnn): </label>
-            <input type="text" id="zipBox" name="zipcode" placeholder="Enter your zipcode here">
-            <br>
-            <button type="submit">Submit</button>
+    <body style="background-color: #22223B;">
+        <div id="createForm">
+        <form action="createUser.php" method="post">
+            <div class="inputLine">
+                <label for="number">Enter your phone number:<br>(+1nnnnnnnnnn)<br></label>
+                <input type="text" id="numberBox" name="number" placeholder="Enter phone number here">
+                <br>
+            </div>
+            <div class="inputLine">
+                <label for="name">Enter your first name:<br></label>
+                <input type="text" id="nameBox" name="name" placeholder="Enter your first name here">
+                <br>
+            </div>
+            <div class="inputLine">
+                <label for="zipcode">Enter your zipcode here:<br>(nnnnn)<br></label>
+                <input type="text" id="zipBox" name="zipcode" placeholder="Enter your zipcode here">
+                <br>
+            </div>
+            <div class="inputLine">
+                <button type="submit" id="submitButton">Submit</button>
+            </div>
         </form>
+        </div>
     </body>
 </html>

@@ -24,12 +24,32 @@
     else {
         $query = "INSERT INTO numberSet VALUES (" . $zipcode . ", \"" . $name . "\", \"" . $number . "\");";
 
-        if ($dbconn->query($query) == true) {
-            echo "Got you!";
+        //Go to landing page if entered correctly
+        if ($dbconn->query($query) == true) {   
+            header("Location: landing.html");
+            die();
         }
 
+        //Otherwise print out error
         else {
-            echo $dbconn->error;
+            echo "
+            <!DOCTYPE html>
+            <html lang=\"en\">
+                <head>
+                    <meta charset=\"UTF-8\">
+                    <title>Uh oh....</title>
+                    <link rel=\"stylesheet\" href=\"style.css\">
+                    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+                </head>
+                <body style=\"background-color: #22223B;\">
+                    <div id=\"landingPage\">
+                        <p>
+                            Error! This is what has happened:<br>
+                            " . $dbconn->error . "
+                        </p>
+                    </div>
+                </body>
+            </html>";
         }
     }
 ?>
